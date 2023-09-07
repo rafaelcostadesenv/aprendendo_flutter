@@ -1,9 +1,8 @@
-import 'dart:developer';
-
+import 'package:aprendendo_flutter/modules/cachorro/pages/cachorro_list_page.dart';
 import 'package:aprendendo_flutter/utils/app_routes.dart';
-import 'package:brasil_fields/brasil_fields.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,36 +10,39 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+
         title: const Text('HomePage'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.add),
-              Text(
-                'TITULO HOME PAGE',
-                textAlign: TextAlign.center,
+          SizedBox(
+            height: 150,
+            child: InkWell(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(AppRoutes.CACHORRO_LIST_PAGE),
+              child: const Card(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.pets,
+                        size: 50,
+                      ),
+                      Text('Listagem de Cachorros'),
+                    ],
+                  ),
+                ),
               ),
-            ],
-          ),
-          const Text('Segundo Texto'),
-          TextField(
-            onChanged: (value) => log(value),
-            onSubmitted: (value) => log('Enviado => $value'),
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              CentavosInputFormatter(),
-            ],
+            ),
           ),
           ElevatedButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AppRoutes.SEGUNDA_PAGINA),
-            child: const Text('Proxima Tela'),
+            onPressed: () {}, 
+            child: const Text("Botão")
           ),
         ],
       ),

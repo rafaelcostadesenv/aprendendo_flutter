@@ -4,6 +4,7 @@ import 'package:aprendendo_flutter/modules/cachorro/models/cachorro_model.dart';
 import 'package:aprendendo_flutter/modules/cachorro/pages/cachorro_list_page.dart';
 import 'package:aprendendo_flutter/modules/home/pages/home_page.dart';
 import 'package:aprendendo_flutter/modules/home/pages/second_page.dart';
+import 'package:aprendendo_flutter/theme/my_theme.dart';
 import 'package:aprendendo_flutter/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: MyTheme.lightTheme,
+      themeMode: ThemeMode.system,
       home:  HomePage(),
       routes: {
         AppRoutes.HOME: (context) => HomePage(),

@@ -1,8 +1,9 @@
 import 'package:aprendendo_flutter/modules/cachorro/models/cachorro_model.dart';
+import 'package:aprendendo_flutter/theme/my_colors.dart';
 import 'package:flutter/material.dart';
 
 class CachorroListPage extends StatefulWidget {
-  CachorroListPage({super.key});
+  const CachorroListPage({super.key});
 
   @override
   State<CachorroListPage> createState() => _CachorroListPageState();
@@ -32,12 +33,12 @@ class _CachorroListPageState extends State<CachorroListPage> {
 
   List<Widget> _buildCachorros() {
     List<Widget> widgets = [];
-    cachorros.forEach((element) {
+    for (var element in cachorros) {
       widgets.add(ListTile(
         title: Text(element.nome ?? '-'),
         subtitle: Text(element.descricao ?? '-'),
       ));
-    });
+    }
 
     return widgets;
   }
@@ -45,9 +46,43 @@ class _CachorroListPageState extends State<CachorroListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const UserAccountsDrawerHeader(
+              accountName: Text("Rafael"), 
+              accountEmail: Text("rafael.costa.desenv@gamil.com"),
+              currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/Avatar.jpg")),
+              ),
+              ElevatedButton(
+                onPressed: () {}, 
+                child: const Text("Botão",
+                  style: TextStyle(
+                    color: MyColors.textligth
+                  ),
+                )
+              ),
+            const Card(
+              child: ListTile(
+                title: Text('Home'),
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                title: Text('Cachorros'),
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                title: Text('Gatos'),
+              ),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amber,
+
         title: const Text(
           "Listagem de Cachorros",
         ),
