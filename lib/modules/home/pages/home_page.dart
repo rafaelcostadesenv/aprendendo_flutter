@@ -1,4 +1,5 @@
 import 'package:aprendendo_flutter/utils/app_routes.dart';
+import 'package:aprendendo_flutter/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,9 +8,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.amber,
         title: const Text('HomePage'),
       ),
       body: Column(
